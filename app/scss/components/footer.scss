@@ -1,0 +1,15 @@
+@use "../util/" as *;
+
+.footer {
+    padding-block: 40px 60px;
+
+    /* Tablet */
+    @include breakpoint(medium) {
+        padding-block: 30px 40px;
+    }
+
+    /* Pc */
+    @include breakpoint(medium) {
+        padding-block: 47px 92px;
+    }
+}
