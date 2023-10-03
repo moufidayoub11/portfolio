@@ -173,6 +173,16 @@
         }
     }
 
+    &__contact_wrapper {
+        display: flex;
+        justify-content: center;
+        gap: rem(25);
+        /* Tablet */
+        @include breakpoint(medium) {
+            justify-content: flex-start;
+        }
+    }
+
     &__contact {
         transition: all 250ms ease-in-out;
         &:hover {
