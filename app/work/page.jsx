@@ -12,31 +12,39 @@ import WorkSliderBtn from "@/components/WorkSliderBtn"
 const projects = [
   {
     title: "VS Code Extension: Betty",
-    description: "Betty Extension is a Visual Studio Code extension that helps you identify and handle Betty coding style and documentation errors and warnings in real-time.",
+    description: "Betty Extension is a Visual Studio Code extension with over 3,500 users that helps you identify and handle errors and warnings related to the C coding style, known as Betty, used at Holberton School in real-time.",
     live: "https://marketplace.visualstudio.com/items?itemName=moufidayoub11.betty-extension",
     github: "https://github.com/moufidayoub11/betty-extension",
     stack: ["Javascript", "VS Code API", "Git"],
     image: "/assets/work/betty.png",
     num: "01"
   },
-  // {
-  //   title: "Sorting Visualizer",
-  //   description: "This sorting visualizer lets you compare and visualize how different sorting algorithms like Merge Sort, Heap Sort, Quick Sort, Radix Sort, and Bubble Sort work.",
-  //   live: "https://sorting-visualizer-ecru-one.vercel.app/",
-  //   github: "https://github.com/moufidayoub11/sorting-visualizer",
-  //   stack: ["js", "scss", "html"],
-  //   image: "/assets/work/thumb1.png",
-  //   num: "02"
-  // },
-  // {
-  //   title: "Algorithm Visualizer",
-  //   description: "This tool allows you to compare and visualize different pathfinding algorithms such as A*, Dijkstra, DFS, and BFS. ",
-  //   live: "https://algo-visualizer-tau.vercel.app/",
-  //   github: "https://github.com/moufidayoub11/algo-visualizer",
-  //   stack: ["js", "scss", "html"],
-  //   image: "/assets/work/thumb2.png",
-  //   num: "03"
-  // }
+  {
+    title: "Freelance Project: Flagri",
+    description: "I designed a complete smart farming solution for Flagri, featuring a responsive website with a landing page, dashboard, and marketplace mockup. The platform includes secure user authentication and a database for streamlined data management. Additionally, I developed an IoT device that monitors real-time soil conditions and feeds data into the dashboard. An integrated AI model analyzes this data to provide personalized plant care recommendations, empowering farmers with actionable insights for improved crop management.",
+    live: "https://flagry.vercel.app/",
+    stack: ["Electronics", "Soldering", "MQTT", "Next.js", "Tailwind", "JavaScript", "CSS", "MongoDB", "API", "Git"],
+    image: "/assets/work/flagri.png",
+    num: "01"
+  },
+  {
+    title: "Sorting Visualizer",
+    description: "This sorting visualizer lets you compare and visualize how different sorting algorithms like Merge Sort, Heap Sort, Quick Sort, Radix Sort, and Bubble Sort work.",
+    live: "https://sorting-visualizer-ecru-one.vercel.app/",
+    github: "https://github.com/moufidayoub11/sorting-visualizer",
+    stack: ["js", "sass", "html"],
+    image: "/assets/work/sortvis.png",
+    num: "02"
+  },
+  {
+    title: "Algorithm Visualizer",
+    description: "This tool allows you to compare and visualize different pathfinding algorithms such as A*, Dijkstra, DFS, and BFS. ",
+    live: "https://algo-visualizer-tau.vercel.app/",
+    github: "https://github.com/moufidayoub11/algo-visualizer",
+    stack: ["js", "sass", "html"],
+    image: "/assets/work/algovis.png",
+    num: "03"
+  }
 ]
 const Page = () => {
   const [project, setProject] = useState(projects[0]);
@@ -60,7 +68,7 @@ const Page = () => {
               <p className=" text-text/80">{project.description}</p>
               {
                 project.stack && (
-                  <ul className="flex gap-4">
+                  <ul className="flex gap-4 flex-wrap">
                     {project.stack.map((stack, i) => (
                       <li key={i} className="text-xl text-accent">{stack}{i != project.stack.length - 1 && ","}</li>
                     ))}
@@ -69,12 +77,18 @@ const Page = () => {
               }
               <div className="border border-text/80"></div>
               <div className="flex gap-4">
-                <Link target="_blank" href={project.live} className="w-[70px] h-[70px] rounded-full bg-text/10 flex justify-center items-center group">
+              {project.live && (
+                  <Link target="_blank" href={project.live} className="w-[70px] h-[70px] rounded-full bg-text/10 flex justify-center items-center group">
                   <BsArrowUpRight className="text-3xl text-text group-hover:text-accent" />
                 </Link>
-                <Link target="_blank" href={project.github} className="w-[70px] h-[70px] rounded-full bg-text/10 flex justify-center items-center group">
-                  <BsGithub className="text-3xl text-text group-hover:text-accent" />
-                </Link>
+                  )
+                }
+                {project.github && (
+                  <Link target="_blank" href={project.github} className="w-[70px] h-[70px] rounded-full bg-text/10 flex justify-center items-center group">
+                    <BsGithub className="text-3xl text-text group-hover:text-accent" />
+                  </Link>
+                  )
+                }
               </div>
               
             </div>
@@ -82,11 +96,11 @@ const Page = () => {
           <div className="w-full xl:w-[50%]">
             <Swiper slidesPerView={1} spaceBetween={30} className="xl:h-[520px] mb-12" onSlideChange={handleSlideChange}>
               {projects.map((project, i) => (
-                  <SwiperSlide key={i} className="w-full">
+                  <SwiperSlide key={i} className="w-full bg-primary">
                     <div className="h-[460px] relative group flex justify-center items-center bg-text/5">
-                    <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
+                    <div className="absolute top-0 bottom-0 w-full h-full z-10"></div>
                     <div>
-                      <Image priority={true} quality={100} src={project.image} fill className="object-cover" alt="" />
+                      <Image priority={true} quality={100} src={project.image} fill className="object-contain bg-primary" alt="" />
                     </div>
                     </div>
                   </SwiperSlide>
